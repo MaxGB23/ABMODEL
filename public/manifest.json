@@ -7,6 +7,7 @@
     "theme_color": "#000000",
     "orientation": "any",
     "icons": [
+
         {
             "src": "/images/icons/icon-72x72.png",
             "sizes": "72x72",

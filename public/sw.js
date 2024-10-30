@@ -1,5 +1,6 @@
 const CACHE_NAME = "OneClickPWA";
 const urlsToCache = [
+
     "/", // Página principal
     "/about", // Acerca de
     "/contact", // Contacto
