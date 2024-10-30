@@ -1,0 +1,252 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; 222*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    background-color: #0f0f0f;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Orbitron", sans-serif;
+}
+
+
+/* Gallery */
+.gallery {
+    background: #181818;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.carousel {
+    position: relative;
+    max-width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+    width: 80%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+/* Estilo de los botones */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2); /* Glassmorphism */
+    backdrop-filter: blur(10px);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    font-size: 20px;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.prev:hover,
+.next:hover {
+    background: rgba(255, 255, 255, 0.4); /* Efecto hover glass */
+    transform: scale(1.1); /* Efecto de agrandamiento */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Media queries para responsividad */
+
+@media screen and (min-width: 1024px) {
+    .slides img {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .slides img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .slides img {
+        width: 100%;
+    }
+}
+
+/* About Section */
+.about {
+    background: #111;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.about p {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #ccc;
+    font-size: 1.2rem;
+}
+
+/* Contact Section */
+.contact {
+    background: #1a1a1a;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact input,
+.contact textarea {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    background: #2a2a2a;
+    color: #fff;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    border: 2px solid #00ccff; /* Cambiado a azul futurista */
+    outline: none;
+}
+
+.contact button {
+    padding: 15px;
+    background: #00ccff; /* Cambiado a azul futurista */
+    border: none;
+    color: #000;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.contact button:hover {
+    background: #0099cc; /* Cambiado a azul futurista */
+    transform: translateY(-5px);
+}
+
+/* Footer */
+.footer {
+    background: #000;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 3rem;
+    }
+
+    .nav-list {
+        display: none;
+    }
+
+    .menu-icon {
+        display: flex;
+    }
+
+    .nav-list.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #000;
+    }
+
+    .nav-list li {
+        margin: 20px 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Clase base para elementos que tendrán la animación de fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    -webkit-transition: opacity 0.3s ease, transform 0.3s ease;
+    -moz-transition: opacity 0.3s ease, transform 0.3s ease;
+    -ms-transition: opacity 0.3s ease, transform 0.3s ease;
+    -o-transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Clase visible que activa la animación */
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+textarea {
+    font-family: Arial, Helvetica, sans-serif;
+}
