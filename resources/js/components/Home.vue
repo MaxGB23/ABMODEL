@@ -1,5 +1,5 @@
 <template>
-    <section id="home" class="hero fade-in">
+    <section id="home prueba" class="hero fade-in">
         <div class="hero-content fade-in">
             <h2>Soluciones Inteligentes para un Futuro Seguro</h2>
             <p>Descubre el futuro de la tecnología en redes y seguridad</p>
