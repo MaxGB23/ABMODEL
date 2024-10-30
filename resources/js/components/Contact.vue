@@ -1,7 +1,7 @@
 <template>
     <section id="contact" class="contact fade-in visible">
         <h2>Contáctanos</h2>
-        <form @submit.prevent="submitForm">
+        <form @submit.prevent="submitForm" id="prueba">
             <input type="text" v-model="name" placeholder="Nombre" required />
             <input type="email" v-model="email" placeholder="Correo Electrónico" required />
             <input type="tel" v-model="phone" placeholder="Teléfono" required />
