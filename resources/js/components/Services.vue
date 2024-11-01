@@ -30,7 +30,7 @@ export default {
     },
     computed: {
         logoUrl() {
-            return `${window.location.origin}/images/logo.jpeg`;
+            return `${window.location.origin}/images/servicios.gif`;
         }
     },
     mounted() {
@@ -66,7 +66,7 @@ export default {
     gap: 30px;
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); */
 }
 
 /* Sección de Lista de Servicios */

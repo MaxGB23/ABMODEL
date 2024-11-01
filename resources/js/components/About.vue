@@ -8,23 +8,25 @@
                         Somos una empresa comprometida con el futuro de la tecnología en redes y seguridad.
                         Nos dedicamos a ofrecer soluciones innovadoras para proteger y optimizar tus
                         sistemas de información.
-                    </p>
+                    </p><br>
                     <h3>Misión</h3>
                     <p>
-                        Brindar soluciones de alta calidad en tecnología, garantizando seguridad y
-                        eficiencia para nuestros clientes.
-                    </p>
+                        En One Click TI, nos dedicamos a brindar soluciones tecnológicas integrales en conectividad de redes, seguridad y confort, ofreciendo servicios de instalación y mantenimiento de sistemas de cámaras, alarmas y aires acondicionados. Nos comprometemos a mejorar la calidad de vida de nuestros clientes mediante tecnología de vanguardia.
+                    </p><br>
                     <h3>Visión</h3>
-                    <p>
-                        Ser líderes en innovación tecnológica y referentes en soluciones de seguridad
-                        avanzada.
-                    </p>
+                    <p><br>
+                        Ser líderes en el sector de redes y seguridad en la región, reconocidos por nuestra confiabilidad, innovación y excelencia en el servicio, creando ambientes seguros y cómodos para hogares y negocios.
+                    </p><br>
                     <h3>Valores</h3>
-                    <ul>
-                        <li>Compromiso</li>
-                        <li>Innovación</li>
-                        <li>Calidad</li>
-                        <li>Responsabilidad</li>
+                    <ul class="valores">
+                        <li>Compromiso:</li>
+                            <p> Nos esforzamos por satisfacer las necesidades de nuestros clientes.</p>
+                        <li>Innovación:</li>
+                            <p>Implementamos tecnología avanzada en cada solución.</p>
+                        <li>Calidad:</li>
+                            <p>Garantizamos servicios y productos de alto rendimiento.</p>
+                        <li>Integridad:</li>
+                            <p>Actuamos con transparencia y ética en todas nuestras operaciones.</p>
                     </ul>
                 </div>
                 <div class="image-section">
@@ -55,7 +57,7 @@ export default {
     },
     computed: {
         logoUrl() {
-            return `${window.location.origin}/images/logo.jpeg`;
+            return `${window.location.origin}/images/quienes.gif`;
         },
     }
 };
@@ -69,6 +71,13 @@ export default {
     padding: 60px 20px;
 }
 
+.valores li{
+    list-style: outside;
+}
+
+.valores{
+    padding-left: 20px
+}
 .about-content-container {
     max-width: 1200px;
     width: 100%;

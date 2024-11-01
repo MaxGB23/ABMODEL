@@ -8,8 +8,16 @@ const urlsToCache = [
     "/resources/css/app.css", // CSS
     "/resources/js/app.js", // JavaScript
     "/manifest.json", // Manifesto de la aplicación
-    "/images/icons/icon-192x192.png", // Ícono
-    "/images/icons/icon-512x512.png", // Ícono
+    "/images/icons/icon-144x144.png",
+    "/images/icons/icon-192x192.png",
+    "/images/icons/icon-512x512.png",
+    "/images/icons/icon-96x96.png",
+    // Agregados splash screens
+    "/images/icons/splash-640x1136.png",
+    "/images/icons/splash-750x1334.png",
+    "/images/icons/splash-1125x2436.png",
+    "/images/icons/splash-1536x2048.png",
+    "/images/icons/splash-2048x2732.png"
 ];
 
 // Instalar el Service Worker
