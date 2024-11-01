@@ -5,20 +5,27 @@
                 <div class="text-section">
                     <h2>Quiénes Somos</h2>
                     <p>
+
+
                         Somos una empresa comprometida con el futuro de la tecnología en redes y seguridad.
                         Nos dedicamos a ofrecer soluciones innovadoras para proteger y optimizar tus
                         sistemas de información.
+
                     </p>
                     <h3>Misión</h3>
+
                     <p>
                         Brindar soluciones de alta calidad en tecnología, garantizando seguridad y
                         eficiencia para nuestros clientes.
                     </p>
+
                     <h3>Visión</h3>
+
                     <p>
                         Ser líderes en innovación tecnológica y referentes en soluciones de seguridad
                         avanzada.
                     </p>
+
                     <h3>Valores</h3>
                     <ul>
                         <li>Compromiso</li>
