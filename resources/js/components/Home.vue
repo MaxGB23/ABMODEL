@@ -3,9 +3,13 @@
         <div class="hero-content fade-in">
             <h2>Soluciones Inteligentes para un Futuro Seguro</h2>
             <p>Descubre el futuro de la tecnología en redes y seguridad</p>
-            <a href="#services" class="btn fade-in">Ver Servicios</a>
+            <!-- <a href="#services" class="btn fade-in">Ver Servicios</a> -->
+            <router-link class="btn" to="/services">Ver servicios</router-link>
         </div>
     </section>
+    <main>
+            <router-view></router-view>
+    </main>
 </template>
 
 <script>

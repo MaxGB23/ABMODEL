@@ -14,11 +14,11 @@
                         En One Click TI, nos dedicamos a brindar soluciones tecnológicas integrales en conectividad de redes, seguridad y confort, ofreciendo servicios de instalación y mantenimiento de sistemas de cámaras, alarmas y aires acondicionados. Nos comprometemos a mejorar la calidad de vida de nuestros clientes mediante tecnología de vanguardia.
                     </p><br>
                     <h3>Visión</h3>
-                    <p><br>
+                    <p>
                         Ser líderes en el sector de redes y seguridad en la región, reconocidos por nuestra confiabilidad, innovación y excelencia en el servicio, creando ambientes seguros y cómodos para hogares y negocios.
                     </p><br>
                     <h3>Valores</h3>
-                    <ul class="valores">
+                    <ul>
                         <li>Compromiso:</li>
                             <p> Nos esforzamos por satisfacer las necesidades de nuestros clientes.</p>
                         <li>Innovación:</li>
@@ -68,16 +68,9 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px 20px;
+    padding: 20px 20px;
 }
 
-.valores li{
-    list-style: outside;
-}
-
-.valores{
-    padding-left: 20px
-}
 .about-content-container {
     max-width: 1200px;
     width: 100%;
@@ -98,6 +91,19 @@ export default {
     flex: 1;
 }
 
+.text-section ul {
+    list-style: outside; /* Asegura que los marcadores estén visibles */
+    padding-left: 20px;  /* Aplica sangría a toda la lista */
+    margin: 10px 0;
+}
+
+.text-section ul li {
+    margin: 5px 0;
+}
+
+
+
+
 .text-section {
     padding: 20px;
     text-align: justify;
@@ -115,11 +121,12 @@ export default {
 }
 
 .text-section ul {
-    list-style: none;
-    padding: 0;
+    padding-left: 20px;  /* Aplica sangría a toda la lista */
+    margin: 10px 0;
 }
 
 .text-section ul li {
+    list-style: outside;
     margin: 5px 0;
 }
 
