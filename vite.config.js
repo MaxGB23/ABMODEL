@@ -1,28 +1,20 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import vue from "@vitejs/plugin-vue";
-import { VitePWA } from 'vite-plugin-pwa';
+import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input: 'resources/js/app.js',
             refresh: true,
         }),
-        vue(),
-        VitePWA({
-            registerType: 'autoUpdate',
-            manifest: 'manifest.json',
-            srcDir: '',  // Directorio del Service Worker
-            filename: 'sw.js',  // Nombre del archivo del Service Worker
-            injectRegister: 'auto',
-        })
-
-
+        vue({
+            template: {
+                transformAssetUrls: {
+                    base: null,
+                    includeAbsolute: false,
+                },
+            },
+        }),
     ],
-    resolve: {
-        alias: {
-            'vue': 'vue/dist/vue.esm-bundler.js',
-        },
-    },
 });

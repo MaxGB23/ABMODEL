@@ -33,6 +33,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
     /**
      * Get the attributes that should be cast.
      *
@@ -45,4 +46,50 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function categoriasCreadas()
+    {
+        return $this->hasMany(Categoria::class, 'created_by');
+    }
+
+    public function categoriasActualizadas()
+    {
+        return $this->hasMany(Categoria::class, 'updated_by');
+    }
+
+    /**
+     * Relaciones Uno a Muchos con el modelo Servicio
+     */
+    public function serviciosCreados()
+    {
+        return $this->hasMany(Servicio::class, 'created_by');
+    }
+
+    public function serviciosActualizados()
+    {
+        return $this->hasMany(Servicio::class, 'updated_by');
+    }
+
+    /**
+     * Relaciones Uno a Muchos con el modelo Contacto
+     */
+
+    public function contactosActualizados()
+    {
+        return $this->hasMany(Contacto::class, 'updated_by');
+    }
+
+    /**
+     * Relaciones Uno a Muchos con el modelo Faq
+     */
+    public function faqsCreadas()
+    {
+        return $this->hasMany(Faq::class, 'created_by');
+    }
+
+    public function faqsActualizadas()
+    {
+        return $this->hasMany(Faq::class, 'updated_by');
+    }
+
 }

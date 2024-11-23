@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+        <div class="w-full max-w-2xl bg-white rounded-lg shadow-lg flex">
+            <!-- Sección de inicio de sesión -->
+            <div class="w-1/2 p-8">
+                <h2 class="text-2xl font-bold mb-6">Iniciar Sesión</h2>
+                <form>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Correo Electrónico</label>
+                        <input class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" type="email" id="email" placeholder="Ingresa tu correo">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Contraseña</label>
+                        <input class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" type="password" id="password" placeholder="Ingresa tu contraseña">
+                    </div>
+                    <div class="flex items-center justify-between mb-6">
+                        <label class="flex items-center text-gray-700 text-sm">
+                            <input class="mr-2 leading-tight" type="checkbox">
+                            <span>Recordarme</span>
+                        </label>
+                        <a href="#" class="text-sm text-blue-500 hover:underline">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <button class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                        Iniciar Sesión
+                    </button>
+                </form>
+            </div>
+
+            <!-- Sección de bienvenida -->
+            <div class="w-1/2 bg-gradient-to-br from-blue-500 to-blue-400 text-white flex flex-col items-center justify-center rounded-r-lg p-8">
+                <img src="/path/to/logo.png" alt="Logo One Click Ti" class="w-16 h-16 mb-4">
+                <h2 class="text-2xl font-bold mb-2">Bienvenido a One Click Ti</h2>
+                <p class="mb-6">Inicia Sesión para continuar</p>
+                <button class="px-6 py-2 border border-white rounded-lg font-bold text-white hover:bg-white hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75">
+                    Crear Cuenta
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
