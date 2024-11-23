@@ -1,5 +1,5 @@
 <script setup>
-import Admin from '@/components/Admin.vue';
+import Admin from '@/Components/Admin.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 </script>
