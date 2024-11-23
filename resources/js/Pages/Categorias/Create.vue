@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NavBack from '@/components/NavBack.vue';
+import NavBack from '@/Components/NavBack.vue';
 import { Head,useForm, Link } from '@inertiajs/vue3';
 import { watch } from 'vue';
 import InputError from '@/Components/InputError.vue';
