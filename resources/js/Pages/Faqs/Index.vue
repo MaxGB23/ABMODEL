@@ -1,7 +1,7 @@
 <script setup>
-import NavBack from '@/components/NavBack.vue';
-import Pagination from '@/components/Pagination.vue';
-import SearchBar from '@/components/SearchBar.vue';
+import NavBack from '@/Components/NavBack.vue';
+import Pagination from '@/Components/Pagination.vue';
+import SearchBar from '@/Components/SearchBar.vue';
 import { usePage, Link, Head, useForm, router } from '@inertiajs/vue3';
 import { computed, ref, watch } from "vue";
 
