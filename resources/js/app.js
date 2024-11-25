@@ -5,12 +5,12 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
-import router from "./router";
-import app from "./Components/App.vue";
+// import router from "./router";
+// import app from "./Components/App.vue";
 
 
 
-createApp(app).use(router).mount("#app");
+//createApp(app).use(router).mount("#app");
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -32,31 +32,21 @@ createInertiaApp({
     },
 });
 
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js',{ scope: '/' })
+            .then(registration => {
+                console.log('Service Worker registrado con éxito:', registration);
+            })
+            .catch(error => {
+                console.log('Error al registrar el Service Worker:', error);
+            });
+            navigator.serviceWorker.ready.then((registration) => {
+                console.log('Service Worker listo y gestionando las solicitudes');
+            });
 
-
-
-
-
-// Función para aplicar animación de "fade-in" a los elementos en el viewport
-function applyScrollAnimations() {
-    const elements = document.querySelectorAll(".fade-in");
-    const viewportHeight = window.innerHeight;
-
-    elements.forEach((element) => {
-        const elementTop = element.getBoundingClientRect().top;
-
-        // Añadir o quitar la clase 'visible' en función de si el elemento está en el viewport
-        if (elementTop < viewportHeight - 100) {
-            element.classList.add("visible");
-        } else {
-            element.classList.remove("visible");
-        }
     });
 }
 
-// Escuchar el evento de scroll para activar la animación
-window.addEventListener("scroll", applyScrollAnimations);
 
-// Ejecutar la animación también en el primer renderizado de la página
-document.addEventListener("DOMContentLoaded", applyScrollAnimations);
 

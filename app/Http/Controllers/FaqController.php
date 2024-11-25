@@ -71,4 +71,9 @@ class FaqController extends Controller
         $faq->delete();
         return redirect()->route('faqs.index');
     }
+
+    public function show($id)
+    {
+        return redirect()->route('faqs.index');
+    }
 }

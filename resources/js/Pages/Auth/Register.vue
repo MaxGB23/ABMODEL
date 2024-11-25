@@ -78,4 +78,8 @@ const submit = () => {
 .left-box h2 {
     margin-bottom: 0px;
 }
+
+.left-box{
+    color: #000 !important;
+}
 </style>

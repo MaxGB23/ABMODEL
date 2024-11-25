@@ -73,5 +73,9 @@ class CategoriaController extends Controller
         return redirect()->route('categorias.index');
     }
 
+    public function show($id)
+    {
+        return redirect()->route('categorias.index');
+    }
 
 }

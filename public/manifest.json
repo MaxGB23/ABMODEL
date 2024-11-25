@@ -1,6 +1,7 @@
 {
     "name": "One Click Ti",
     "short_name": "One Click",
+    "description": "PWA OneClickTi",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",

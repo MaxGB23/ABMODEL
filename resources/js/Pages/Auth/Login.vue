@@ -55,7 +55,7 @@ const submit = () => {
                     <input type="checkbox" v-model="form.remember" />
                     Recordarme
                 </label>
-                <Link v-if="canResetPassword" :href="route('password.request')">¿Olvidaste tu contraseña?</Link>
+                <!-- <Link v-if="canResetPassword" :href="route('password.request')">¿Olvidaste tu contraseña?</Link> -->
             </div>
 
             <button @click="submit" class="btn-login">Iniciar Sesión</button>
@@ -98,6 +98,10 @@ h2{
 .input-group{
     margin-bottom: 10px;
 
+}
+
+.left-box{
+    color: #000;
 }
 
 .input-group label{

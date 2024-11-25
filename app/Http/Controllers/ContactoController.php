@@ -47,8 +47,16 @@ class ContactoController extends Controller
     {
         Contacto::create($request->validated());
 
-        return redirect()->route('contactos.index');
+        // return redirect()->route('contactos.index');
     }
+
+    public function add(StoreContactoRequest $request)
+{
+    Contacto::create($request->validated());
+    return redirect()->route('contact');
+}
+
+
 
     public function edit(Contacto $contacto)
     {
@@ -68,6 +76,11 @@ class ContactoController extends Controller
     public function destroy(Contacto $contacto)
     {
         $contacto->delete();
+        return redirect()->route('contactos.index');
+    }
+
+    public function show($id)
+    {
         return redirect()->route('contactos.index');
     }
 }

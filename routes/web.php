@@ -10,10 +10,21 @@ use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
+use App\Models\Servicio;
+use App\Models\Faq;
+use App\Models\Contacto;
+
+// Route::get('/', function () {
+//     return view('app');
+// });
 
 Route::get('/', function () {
-    return view('app');
-});
+    return Inertia::render('Home'); // Asegúrate de tener un componente Vue `Login` dentro de tu carpeta de `Admin`
+})->name('/');
+
+// Route::get('/services2', function () {
+//     return Inertia::render('Services');
+// })->name('services2');
 
 Route::get('/admin', function () {
     return redirect('/admin/login');
@@ -24,18 +35,6 @@ Route::get('/admin/login', function () {
     return Inertia::render('Admin/Login'); // Asegúrate de tener un componente Vue `Login` dentro de tu carpeta de `Admin`
 });
 
-// Route::get('/admin', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', function () {
     $activeUsers = User::count(); // Cuenta todos los usuarios
@@ -58,6 +57,32 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::get('/services', function () {
+    $services = Servicio::all()->map(function ($service) {
+        return [
+            'id' => $service->id,
+            'title' => $service->servicio,
+            'description' => $service->descripcion,
+            'image_path' => asset('storage/' . $service->image_path),
+            'precio' => $service->precio,
+        ];
+    });
+    return Inertia::render('Services', ['services' => $services]);
+})->name('services');;
+
+
+Route::get('/faq', function () {
+    $faqs = Faq::all()->map(function ($faq) {
+        return [
+            'id' => $faq->id,
+            'pregunta' => $faq->pregunta,
+            'respuesta' => $faq->respuesta,
+        ];
+    });
+
+    return Inertia::render('FAQ', ['faqs' => $faqs]);
+})->name('faq');;
+
 
 
 
@@ -65,25 +90,22 @@ Route::middleware('auth')->group(function () {
 //     return Inertia::render('Home');
 // });
 
-// Route::get('/about', function () {
-//     return Inertia::render('About');
-// });
+Route::get('/about', function () {
+    return Inertia::render('About');
+})->name('about');
 
-// Route::get('/contact', function () {
-//     return Inertia::render('Contact');
-// });
+Route::get('/contact', function () {
 
-// Route::get('/services', function () {
-//     return Inertia::render('Services');
-// });
 
-// Route::get('/faq', function () {
-//     return Inertia::render('FAQ');
-// });
+    return Inertia::render('Contact');
+})->name('contact');
 
-// // Ruta para manejar páginas no encontradas
-// Route::fallback(function () {
-//     return Inertia::render('NotFound');
-// });
+
+
+
+// Ruta para manejar páginas no encontradas
+Route::fallback(function () {
+    return Inertia::render('NotFound');
+});
 
 require __DIR__.'/auth.php';

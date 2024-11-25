@@ -13,6 +13,12 @@ class Servicio extends Model
 
     protected $with = ['creador','actualizador','categoria'];
 
+    protected $appends = ['image_path'];
+
+    // public function getImagePathAttribute()
+    // {
+    //     return asset('storage/' . $this->attributes['image_path']);
+    // }
 
     protected static function booted()
     {

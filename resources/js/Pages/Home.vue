@@ -1,20 +1,30 @@
 <template>
-    <section id="home" class="hero fade-in">
+        <Head title="Inicio"/>
+
+    <Nav/>
+    <section id="home" class="hero">
         <div class="hero-content fade-in">
             <h2>Soluciones Inteligentes para un Futuro Seguro</h2>
             <p>Descubre el futuro de la tecnología en redes y seguridad</p>
             <!-- <a href="#services" class="btn fade-in">Ver Servicios</a> -->
             <br>
-            <router-link class="btn" to="/services">Ver servicios</router-link>
+            <Link class="btn" :href="route('services')">Ver servicios</Link>
         </div>
     </section>
     <main>
-            <router-view></router-view>
+            <!-- <router-view></router-view> -->
     </main>
 </template>
 
 <script>
+import Nav from '@/Components/NavInertia.vue';
+import { Link, Head } from '@inertiajs/vue3';
 export default {
+    components: {
+        Link,
+        Nav,
+        Head,
+    },
     name: 'Home',
     mounted() {
         // Usar Intersection Observer para animar la entrada
@@ -42,20 +52,24 @@ export default {
 /* Hero Section */
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url("/public/images/logo.jpeg") no-repeat center center/cover;
-    height: 100vh;
+        url("/public/images/logo.webp") no-repeat center center/cover;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     opacity: 0;
     animation: fadeInBackground 1.5s ease-out forwards;
+    font-family: 'Roboto', sans-serif;
+
+
 }
 
 .hero-content {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    padding: 50px;
 }
 
 .hero-content.visible {

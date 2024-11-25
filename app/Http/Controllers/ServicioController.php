@@ -71,24 +71,24 @@ class ServicioController extends Controller
     // }
 
     public function store(StoreServicioRequest $request)
-{
-    // Validar los datos entrantes
-    $data = $request->validated();
+    {
+        // Validar los datos entrantes
+        $data = $request->validated();
 
-    // Si hay una imagen, guardarla en el almacenamiento público
-    if ($request->hasFile('image_path')) {
-        // Guardar la imagen en la carpeta 'images' dentro de 'public' y obtener la ruta
-        $imagePath = $request->file('image_path')->store('images', 'public');
+        // Si hay una imagen, guardarla en el almacenamiento público
+        if ($request->hasFile('image_path')) {
+            // Guardar la imagen en la carpeta 'images' dentro de 'public' y obtener la ruta
+            $imagePath = $request->file('image_path')->store('images', 'public');
 
-        // Agregar la ruta de la imagen a los datos
-        $data['image_path'] = $imagePath; // Aquí se usa $imagePath en lugar de $image_path
+            // Agregar la ruta de la imagen a los datos
+            $data['image_path'] = $imagePath; // Aquí se usa $imagePath en lugar de $image_path
+        }
+
+        // Crear el servicio con los datos validados, incluyendo la ruta de la imagen si se subió
+        Servicio::create($data);
+
+        return redirect()->route('servicios.index');
     }
-
-    // Crear el servicio con los datos validados, incluyendo la ruta de la imagen si se subió
-    Servicio::create($data);
-
-    return redirect()->route('servicios.index');
-}
 
 
     public function edit(Servicio $servicio)
@@ -143,6 +143,11 @@ class ServicioController extends Controller
     public function destroy(Servicio $servicio)
     {
         $servicio->delete();
+        return redirect()->route('servicios.index');
+    }
+
+    public function show($id)
+    {
         return redirect()->route('servicios.index');
     }
 }

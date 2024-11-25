@@ -1,8 +1,10 @@
 <template>
-    <section id="about-us" class="about-us">
-        <div class="about-content-container fade-in">
-            <div class="about-content">
-                <div class="text-section">
+    <Head title="Sobre"/>
+    <Nav/>
+    <section id="about-us-section" class="oneclickti-about-us">
+        <div class="oneclickti-about-content-container oneclickti-fade-in">
+            <div class="oneclickti-about-content">
+                <div class="oneclickti-text-section">
                     <h2>Quiénes Somos</h2>
                     <p>
                         Somos una empresa comprometida con el futuro de la tecnología en redes y seguridad.
@@ -29,7 +31,7 @@
                             <p>Actuamos con transparencia y ética en todas nuestras operaciones.</p>
                     </ul>
                 </div>
-                <div class="image-section">
+                <div class="oneclickti-image-section">
                     <img :src="logoUrl" alt="Sobre nosotros" />
                 </div>
             </div>
@@ -37,8 +39,16 @@
     </section>
 </template>
 
+
 <script>
+import Nav from '@/Components/NavInertia.vue';
+import { Link, Head } from '@inertiajs/vue3';
 export default {
+    components: {
+        Link,
+        Nav,
+        Head,
+    },
     name: 'AboutUs',
     mounted() {
         // Usar Intersection Observer para animar la entrada
@@ -46,13 +56,13 @@ export default {
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
+                        entry.target.classList.add("oneclickti-visible");
                     }
                 });
             },
             { threshold: 0.2 }
         );
-        const elements = document.querySelectorAll(".fade-in");
+        const elements = document.querySelectorAll(".oneclickti-fade-in");
         elements.forEach((element) => observer.observe(element));
     },
     computed: {
@@ -63,15 +73,33 @@ export default {
 };
 </script>
 
+
 <style scoped>
-.about-us {
+.oneclickti-about-us {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px 20px;
+    font-family: 'Roboto', sans-serif;
+
 }
 
-.about-content-container {
+
+
+.oneclickti-text-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #ccc;
+    /* font-size: 1.2rem; */
+}
+
+.oneclickti-text-section h2,h3,li {
+    max-width: 800px;
+    /* margin: 0 auto; */
+    font-size: 1.2rem;
+}
+
+.oneclickti-about-content-container {
     max-width: 1200px;
     width: 100%;
     border-radius: 15px;
@@ -80,83 +108,70 @@ export default {
     color: #ffffff;
 }
 
-.about-content {
+.oneclickti-about-content {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-.text-section,
-.image-section {
+.oneclickti-text-section,
+.oneclickti-image-section {
     flex: 1;
 }
 
-.text-section ul {
-    list-style: outside; /* Asegura que los marcadores estén visibles */
-    padding-left: 20px;  /* Aplica sangría a toda la lista */
+.oneclickti-text-section ul {
+    list-style: outside;
+    padding-left: 20px;
     margin: 10px 0;
 }
 
-.text-section ul li {
+.oneclickti-text-section ul li {
     margin: 5px 0;
 }
 
-
-
-
-.text-section {
+.oneclickti-text-section {
     padding: 20px;
     text-align: justify;
 }
 
-.text-section h2,
-.text-section h3 {
+.oneclickti-text-section h2,
+.oneclickti-text-section h3 {
     color: #00ccff;
 }
 
-.text-section p,
-.text-section ul {
+.oneclickti-text-section p,
+.oneclickti-text-section ul {
     margin: 10px 0;
     line-height: 1.6;
 }
 
-.text-section ul {
-    padding-left: 20px;  /* Aplica sangría a toda la lista */
-    margin: 10px 0;
-}
-
-.text-section ul li {
-    list-style: outside;
-    margin: 5px 0;
-}
-
-.image-section {
+.oneclickti-image-section {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
 }
 
-.image-section img {
+.oneclickti-image-section img {
     max-width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.fade-in {
+.oneclickti-fade-in {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.fade-in.visible {
+.oneclickti-fade-in.oneclickti-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
 /* Responsive design */
-@media (min-width: 768px) {
-    .about-content {
+@media (min-width: 1025px) {
+    .oneclickti-about-content {
         flex-direction: row;
     }
 }

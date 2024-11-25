@@ -1,37 +1,12 @@
-<template>
-    <div id="app">
-        <header class="header">
-            <div class="container">
-                <div class="logo">
-                    <h1>One Click</h1>
-                    <img :src="logoUrl" alt="One Click TI Logo" />
-                </div>
-                <nav class="nav">
-                    <MenuIcon @toggle-menu="toggleMenu" :is-menu-visible="isMenuVisible" />
-                    <ul class="nav-list" :class="{ visible: isMenuVisible }">
-                        <li><inertia-link href="/">Inicio</inertia-link></li>
-                        <li><inertia-link href="/about">Quiénes Somos</inertia-link></li>
-                        <li><inertia-link href="/services">Servicios</inertia-link></li>
-                        <li><inertia-link href="/contact">Contacto</inertia-link></li>
-                        <li><inertia-link href="/faq">FAQ</inertia-link></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <main>
-            <inertia :page="page" />
-        </main>
-    </div>
-</template>
-
 <script>
-import { Inertia } from '@inertiajs/inertia';
-import MenuIcon from './MenuIcon.vue'; // Asegúrate de que la ruta sea correcta
+import MenuIcon from './MenuIcon.vue';
+import { Link } from '@inertiajs/vue3';
 
 export default {
     name: 'App',
     components: {
-        MenuIcon // Registra el componente aquí
+        MenuIcon, // Registra el componente aquí
+        Link,
     },
     data() {
         return {
@@ -64,140 +39,161 @@ export default {
     },
 };
 </script>
-
+<template>
+    <div id="app" class="mb-20">
+        <header class="header">
+            <div class="container">
+                <Link :href="route('/')" class="header-logo"> <!-- Cambié 'logo' a 'header-logo' -->
+                    <h1>One Click</h1>
+                    <img :src="logoUrl" alt="One Click TI Logo" />
+                </Link>
+                <nav class="nav">
+                    <MenuIcon @toggle-menu="toggleMenu" :is-menu-visible="isMenuVisible" />
+                    <ul class="nav-list" :class="{ visible: isMenuVisible }">
+                        <li><Link href="/">Inicio</Link></li>
+                        <li><Link href="/about">Quiénes Somos</Link></li>
+                        <li><Link href="/services">Servicios</Link></li>
+                        <li><Link href="/contact">Contacto</Link></li>
+                        <li><Link href="/faq">FAQ</Link></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>
+</template>
 <style scoped>
-#app {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Asegura que el contenido ocupe al menos el 100% de la altura de la pantalla */
-}
-
 .header {
-    background: #000;
-    color: #fff;
-    padding: 20px 0;
-    position: fixed; /* Mantener el navbar fijo en la parte superior */
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background: #000 !important;
+    color: #fff !important;
+    padding: 20px 0 !important;
+    position: fixed !important; /* Mantener el navbar fijo en la parte superior */
+    width: 100% !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
 }
 
 .container {
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 90% !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
+/* Nuevo nombre para la clase del logo */
+.header-logo {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important; /* Asegura que el h1 y la imagen se alineen de manera horizontal */
 }
 
-.logo img {
-    height: 50px;
-    width: auto;
-    margin-left: 8px;
+.header-logo img {
+    height: 50px !important;
+    width: auto !important;
+    margin-left: 10px !important;
 }
 
-.logo h1 {
-    font-size: 2rem;
-    color: #fff;
+/* Estilo para el h1 del logo */
+.header-logo h1 {
+    font-size: 1.7rem;
+    color: #fff !important;
+    margin: 0 !important; /* Asegúrate de que no haya margen extra */
+    padding: 0 !important; /* Asegúrate de que no haya relleno extra */
+    font-family: "Orbitron", sans-serif;
+    font-weight: bold;
+
 }
 
-/* Navbar - Estilo original para desktop */
 .nav {
-    display: flex;
-    align-items: center;
+    display: flex !important;
+    align-items: center !important;
 }
 
 .nav-list {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
+    list-style: none !important;
+    display: flex !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .nav-list li {
-    margin-left: 20px; /* Aplícado al <li> en lugar de al <router-link> */
+    margin-left: 20px !important; /* Aplícado al <li> en lugar de al <router-link> */
 }
 
 .nav-list a {
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 10px 20px;
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+    padding: 10px 20px !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease-in-out !important;
 }
 
 .nav-list a:hover {
-    color: #00b2df; /* Cambiado a azul futurista */
+    color: #00b2df !important; /* Cambiado a azul futurista */
 }
 
 /* Ajuste para el navbar móvil */
 .menu-icon {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    z-index: 1000;
-    padding: 10px;
+    display: none !important;
+    flex-direction: column !important;
+    cursor: pointer !important;
+    z-index: 1000 !important;
+    padding: 10px !important;
 }
 
 .menu-icon span {
-    width: 30px;
-    height: 3px;
-    background: #fff;
-    margin: 5px 0;
-    transition: all 0.3s;
+    width: 30px !important;
+    height: 3px !important;
+    background: #fff !important;
+    margin: 5px 0 !important;
+    transition: all 0.3s !important;
 }
 
 /* Estilo del menú en móvil */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .menu-icon {
-        display: flex;
+        display: flex !important;
     }
 
     .nav-list {
-        display: none; /* Por defecto, ocultar el menú */
-        flex-direction: column;
-        margin-top: 30px;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: #000;
-        padding: 10px 0;
-        border-top: 2px solid #00ccff;
-        transition: all 0.3s ease;
-        z-index: 999;
+        display: none !important; /* Por defecto, ocultar el menú */
+        flex-direction: column !important;
+        margin-top: 30px !important;
+        position: absolute !important;
+        top: 60px !important;
+        left: 0 !important;
+        width: 100% !important;
+        background: #000 !important;
+        padding: 10px 0 !important;
+        border-top: 2px solid #00ccff !important;
+        transition: all 0.3s ease !important;
+        z-index: 999 !important;
     }
 
     .nav-list.visible {
-        display: flex; /* Mostrar menú cuando está visible */
+        display: flex !important; /* Mostrar menú cuando está visible */
     }
 
     .nav-list li {
-        margin: 10px 0; /* Aplícado al <li> */
-        text-align: center;
-        padding: 10px;
-        color: #fff;
-        transition: background 0.3s, color 0.3s;
-        border-radius: 5px;
+        margin: 10px 0 !important; /* Aplícado al <li> */
+        text-align: center !important;
+        padding: 10px !important;
+        color: #fff !important;
+        transition: background 0.3s, color 0.3s !important;
+        border-radius: 5px !important;
     }
 
     .nav-list li:hover {
-        background: #00ccff;
-        color: #000;
+        background: #00ccff !important;
+        /* color: #000000 !important; */
     }
-}
 
-main {
-    margin-top: 80px; /* Espacio para el navbar fijo */
-    flex: 1; /* Asegura que el main ocupe el espacio restante */
+    .nav-list a:hover{
+        color: white;
+    }
 }
 </style>

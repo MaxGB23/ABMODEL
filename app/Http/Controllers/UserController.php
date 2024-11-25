@@ -84,6 +84,11 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('users.index');
     }
+
+    public function show($id)
+    {
+        return redirect()->route('users.index');
+    }
 }
 
 

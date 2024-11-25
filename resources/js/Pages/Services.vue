@@ -1,18 +1,22 @@
 <template>
-    <section id="services" class="services fade-in">
-        <div class="services-content">
-            <div class="service-grid">
-                <div class="service-item" v-for="service in servicios" :key="service.id">
+        <Head title="Servicios"/>
+
+    <Nav></Nav>
+    <section id="oc-services" class="oc-services oc-fade-in">
+
+        <div class="oc-services-content">
+            <div class="oc-service-grid">
+                <div class="oc-service-item" v-for="service in services" :key="service.id">
                     <!-- Imagen de herramienta -->
-                    <img class="service-icon" :src="service.image_path" alt="Icono de servicio" />
-                    <h3>{{ service.servicio }}</h3>
-                    <p>{{ service.descripcion }}</p>
-                    <div class="precio">
-                        <p class="text-center pe">${{ service.precio }}</p>
+                    <img class="oc-service-icon" :src="service.image_path" alt="Icono de servicio" />
+                    <h3 class="text-2xl mb-4">{{ service.title }}</h3>
+                    <p class="oc-service-description">{{ service.description }}</p>
+                    <div class="oc-service-price">
+                        <p class="oc-price-text">${{ service.precio }} </p>
                     </div>
                 </div>
             </div>
-            <div class="image-section">
+            <div class="oc-image-section mx-auto">
                 <img :src="logoUrl" alt="Servicios" />
             </div>
         </div>
@@ -20,10 +24,20 @@
 </template>
 
 <script>
+import Nav from '@/Components/NavInertia.vue';
+import { Link, Head } from '@inertiajs/vue3';
+
 export default {
+    components: {
+        Link,
+        Nav,
+        Head,
+    },
     props: {
-        servicios: Array,  // Los servicios pasados desde el backend
-        search: String,    // Si el backend pasa también la búsqueda
+        services: {
+            type: Array,
+            required: true,
+        },
     },
     computed: {
         logoUrl() {
@@ -31,69 +45,32 @@ export default {
         },
     },
     mounted() {
-        // Usar Intersection Observer para animar la entrada
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
+                        entry.target.classList.add("oc-visible");
                     }
                 });
             },
             { threshold: 0.2 }
         );
-        const elements = document.querySelectorAll(".fade-in");
+        const elements = document.querySelectorAll(".oc-fade-in");
         elements.forEach((element) => observer.observe(element));
-    }
+    },
 };
 </script>
 
 
-
 <style scoped>
-/* Estilo de la imagen como ícono */
-.service-icon {
-    width: 70px;
-    /* Tamaño adecuado para el ícono */
-    height: 70px;
-    object-fit: cover;
-    /* Asegura que la imagen mantenga su proporción */
-    margin-bottom: 10px;
-    /* Espaciado entre el ícono y el título */
-    border-radius: 10px;
-}
-
-.precio {
-    text-align: center !important;
-    font-weight: bold !important;
-    margin-top: 12px !important;
-    /* background-color: #0e0e0e !important;  */
-    padding: 10px 15px !important; /* Espaciado interno */
-    border-radius: 8px !important; /* Bordes redondeados */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5) !important; /* Sombra más fuerte para resaltar en temas oscuros */
-    border: 1px solid #111111 !important; /* Borde sutil para separación */
-}
-
-.pe {
-    font-size: 1.6rem !important; /* Tamaño destacado */
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important; /* Fuente profesional */
-    color: #ffffff !important; /* Azul claro, elegante y legible en temas oscuros */
-    margin: 0 !important;
-    line-height: 1.5 !important; /* Espaciado entre líneas */
-    text-shadow: 1px 1px 1px rgba(0, 225, 255, 0.705) !important; /* Sombra ligera para mayor contraste */
-}
-
-
-
-/* Otros estilos */
-.services {
+/* General Styles */
+.oc-services {
     padding: 20px 20px;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
 
-
-
-.services-content {
+.oc-services-content {
     display: flex;
     flex-direction: column;
     max-width: 1200px;
@@ -103,82 +80,124 @@ export default {
     border-radius: 15px;
 }
 
-.service-grid {
+.oc-service-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+
 }
 
-.service-item {
+.oc-service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     padding: 20px;
     border-radius: 10px;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    width: 100%;  /* Reducido el ancho de los items */
+    margin: 0 auto;  /* Centrado en el contenedor */
+    height: 380px;  /* Altura fija para las tarjetas */
+    overflow: hidden;  /* El contenido que sobrepase la altura se ocultará */
 }
 
-.justify {
-    text-align: justify;
+.oc-service-item h3 {
+    color: #00ccff;
+    font-weight: bold; /* Aplica negritas */
 }
 
-.service-item:hover {
+.oc-service-item:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 204, 255, 0.5);
 }
 
-.service-item h3 {
-    font-size: 1.5rem;
+.oc-service-icon {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
     margin-bottom: 15px;
-    color: #00ccff;
-}
-
-.service-item p {
-    font-size: 0.9rem;
-    color: #ccc;
-}
-
-.image-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 100%;
-}
-
-.image-section img {
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    max-height: 300px;
     border-radius: 10px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .service-grid {
+.oc-service-description {
+    font-size: 0.9rem;
+    color: #ccc;
+    flex-grow: 1;  /* Hace que la descripción ocupe el espacio disponible */
+}
+
+.oc-service-price {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 12px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    border: 1px solid #111111;
+}
+
+.oc-price-text {
+    font-size: 1.6rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px rgba(0, 225, 255, 0.7);
+}
+
+.oc-image-section {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+ /* Centrado vertical */
+    height: auto; /* Opcional: establece una altura */
+    max-width: 100%;
+    flex: 2;  /* Aumentar el tamaño de la sección de imagen */
+}
+
+.oc-image-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Animations */
+.oc-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.oc-fade-in.oc-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1085px) {
+    .oc-service-grid {
         grid-template-columns: 1fr;
     }
 
-    .services-content {
+    .oc-services-content {
         flex-direction: column;
     }
 
-    .image-section {
+    .oc-image-section {
         margin-top: 20px;
     }
 }
 
-@media (min-width: 769px) {
-    .services-content {
+@media (min-width: 1086px) {
+    .oc-services-content {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
     }
 
-    .service-grid {
-        flex: 2;
-    }
-
-    .image-section {
+    .oc-service-grid {
         flex: 1;
-        max-width: 300px;
+    }
+
+    .oc-image-section {
+        flex: 2;  /* Aumentar el tamaño de la sección de imagen */
+        max-width: 450px;  /* Ajustar el tamaño */
     }
 }
 </style>
